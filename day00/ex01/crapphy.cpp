@@ -20,7 +20,7 @@ int main() {
 				search_contacts(contacts, num_contacts);
 				break;
 			case quit:
-				printf("quit\n");
+				exit(0);
 				break;
 			default:
 				return (0);
@@ -28,7 +28,3 @@ int main() {
 	}
 	return (0);
 }
-
-// setw
-// **********
- 
