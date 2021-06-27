@@ -5,6 +5,7 @@
 # include <string>
 # include <cctype>
 # include <iomanip>
+# include <regex>
 
 enum input_code {
 	add,
@@ -100,8 +101,10 @@ class Crapphy {
 		std::string darkSecret;
 };
 
-input_code hash_input (std::string const str);
+input_code hash_input (std::string str);
 void	search_contacts(Crapphy contacts[], int index);
 void	add_contact(Crapphy *contacts, int *num_contacts);
+std::string	trim(std::string str);
+std::string remove_ws(std::string str);
 
 #endif

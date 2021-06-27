@@ -1,6 +1,7 @@
 #include "crapphy.class.hpp"
 
-input_code hash_input (std::string const str) {
+input_code hash_input (std::string str) {
+	str = trim(str);
     if (str == "ADD") return add;
     if (str == "SEARCH") return search;
 	if (str == "EXIT") return quit;
@@ -10,7 +11,7 @@ input_code hash_input (std::string const str) {
 std::string truncate(std::string str, int width)
 {
     if (str.length() > width)
-		return str.substr(0, width - 3) + std::string(3, '.');
+		return str.substr(0, width - 1) + std::string(1, '.');
     return str;
 }
 
@@ -31,34 +32,41 @@ void	search_contacts(Crapphy contacts[], int index) {
 
 	for (int i = 0; i < 4; i++)
 	{
+		if (!i) std::cout << std::endl;
 		std::cout << std::right << std::setw(10) << columns[i];
 		if (i < 3) std::cout << "|";
 		else std::cout << std::endl;
 	}
 	print_contacts(contacts, index);
-	std::cout << "\nSearch contact by id:\n";
-	if(!std::getline(std::cin, input))
+	std::cout << "\nSearch contact by id: ";
+	if (!std::getline(std::cin, input))
 		exit(0);
 	try {
 		user_id = stoi(input);
 		if (user_id > 8 || user_id < 1) {
-			std::cerr << "Not a valid id range\n";
+			std::cerr << "Not a valid id\n";
+			return ;
+		}
+		if (user_id > index) {
+			std::cerr << "Id not found\n";
 			return ;
 		}
 		contacts[user_id - 1].printContact();
 	} catch (...) {
-		std::cerr << "Not a valid index\n";
+		std::cerr << "Not a valid id\n";
 		return ;
 	}
 }
 
 std::string prompt(std::string data)
 {
-	std::string tmp;
-	std::cout << "Enter " << data << " :\n";
-	if (!std::getline(std::cin, tmp))
+	std::string line;
+	std::cout << "Enter " << data << " : ";
+	if (!std::getline(std::cin, line))
 		exit (0);
-	return tmp;
+	line = trim(line);
+	line = remove_ws(line);
+	return line;
 }
 
 int isNumber(std::string str) {
@@ -83,8 +91,32 @@ void	add_contact(Crapphy *contacts, int *index) {
 	contacts[*index].setPhone(prompt("phone number"));
 	contacts[*index].setBithday(prompt("birthday"));
 	contacts[*index].setMeal(prompt("favorite meal"));
-	contacts[*index].setUnderwear(prompt("underwaer color"));
+	contacts[*index].setUnderwear(prompt("underwear color"));
 	contacts[*index].setSecret(prompt("darkest secret"));
 	*index = *index + 1;
 	std::cout << "Contact has been inserted!\n";
+}
+
+std::string	trim(std::string str) {
+	std::string spaces = " \t\n\r\f\v";
+	str.erase(0, str.find_first_not_of(spaces));
+	str.erase(str.find_last_not_of(spaces) + 1, str.length());
+	return str;
+}
+
+std::string remove_ws(std::string str) {
+	std::string res;
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		size_t j = i;
+		while (isspace(str[j])) j++;
+		if (j != i) {
+			res += " ";
+			res += str[j];
+			i = j;
+		}
+		else
+			res += str[i];
+	}
+	return res;
 }

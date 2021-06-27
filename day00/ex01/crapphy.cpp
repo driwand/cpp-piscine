@@ -5,10 +5,9 @@ int main() {
 	Crapphy contacts[8];
 	int num_contacts;
 
-	std::cout << "Pick your action (ADD/SEARCH/EXIT):\n";
-	char test;
 	num_contacts = 0;
 	while (1) {
+		std::cout << "Pick a command (ADD/SEARCH/EXIT): ";
 		if(!std::getline(std::cin, input))
 			exit(0);
 		switch (hash_input(input))
@@ -23,7 +22,7 @@ int main() {
 				exit(0);
 				break;
 			default:
-				return (0);
+				std::cout << "Not a valid input\n";
 		}
 	}
 	return (0);
