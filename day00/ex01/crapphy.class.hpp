@@ -21,12 +21,7 @@ class Crapphy {
 			res += "First Name: " + this->firstName + "\n";
 			res += "Last Name: " + this->lastName + "\n";
 			res += "Nickname: " + this->nickName + "\n";
-			res += "Login: " + this->login + "\n";
-			res += "Postal Adress: " + this->postalAdress + "\n";
-			res += "Email Adress: " + this->emailAdress + "\n";
 			res += "Phone Number: " + this->phoneNumber + "\n";
-			res += "Favorite Meal: " + this->favMeal + "\n";
-			res += "Underwear Color: " + this->underwearColor + "\n";
 			res += "Darkest Secret: " + this->darkSecret + "\n";
 			std::cout << res;
 		}
@@ -54,33 +49,9 @@ class Crapphy {
 		void setNickName(std::string nickName) {
 			this->nickName = nickName;
 		}
-	
-		void setLogin(std::string login) {
-			this->login = login;
-		}
-
-		void setEmail(std::string emailAdress) {
-			this->emailAdress = emailAdress;
-		}
-
-		void setAdress(std::string postalAdress) {
-			this->postalAdress = postalAdress;
-		}
 
 		void setPhone(std::string phoneNumber) {
 			this->phoneNumber = phoneNumber;
-		}
-
-		void setBithday(std::string birthDay) {
-			this->birthDay = birthDay;
-		}
-
-		void setMeal(std::string favMeal) {
-			this->favMeal = favMeal;
-		}
-
-		void setUnderwear(std::string underwearColor) {
-			this->underwearColor = underwearColor;
 		}
 
 		void setSecret(std::string darkSecret) {
@@ -91,13 +62,7 @@ class Crapphy {
 		std::string firstName;
 		std::string lastName;
 		std::string nickName;
-		std::string login;
-		std::string emailAdress;
-		std::string postalAdress;
 		std::string phoneNumber;
-		std::string birthDay;
-		std::string favMeal;
-		std::string underwearColor;
 		std::string darkSecret;
 };
 

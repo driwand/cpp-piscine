@@ -78,22 +78,15 @@ int isNumber(std::string str) {
 
 
 void	add_contact(Crapphy *contacts, int *index) {
-	if (*index > 7) {
-		std::cout << "You have already reached the max contacts." << std::endl;
-		return ;
-	}
-	contacts[*index].setFirstName(prompt("first name"));
-	contacts[*index].setLastName(prompt("last name"));
-	contacts[*index].setNickName(prompt("nickname"));
-	contacts[*index].setLogin(prompt("login"));
-	contacts[*index].setEmail(prompt("email address"));
-	contacts[*index].setAdress(prompt("postal address"));
-	contacts[*index].setPhone(prompt("phone number"));
-	contacts[*index].setBithday(prompt("birthday"));
-	contacts[*index].setMeal(prompt("favorite meal"));
-	contacts[*index].setUnderwear(prompt("underwear color"));
-	contacts[*index].setSecret(prompt("darkest secret"));
-	*index = *index + 1;
+	int i = *index;
+
+	if (*index > 7) i = 0;
+	else *index = *index + 1;
+	contacts[i].setFirstName(prompt("first name"));
+	contacts[i].setLastName(prompt("last name"));
+	contacts[i].setNickName(prompt("nickname"));
+	contacts[i].setPhone(prompt("phone number"));
+	contacts[i].setSecret(prompt("darkest secret"));
 	std::cout << "Contact has been inserted!\n";
 }
 
