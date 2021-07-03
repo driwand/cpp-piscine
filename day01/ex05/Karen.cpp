@@ -15,24 +15,8 @@ void Karen::complain(std::string level) {
 		&Karen::warning,
 		&Karen::error
 	};
-
-	switch (hash_input(level))
-	{
-		case DEBUG:
-			(this->*dg[0])();
-			break;
-		case INFO:
-			(this->*dg[1])();
-			break;
-		case WARNING:
-			(this->*dg[2])();
-			break;
-		case ERROR:
-			(this->*dg[3])();
-			break;
-		default:
-			break;
-	}
+	input_code input = hash_input(level);
+	if (input != none) (this->*dg[input])();
 }
 
 void Karen::debug(void) {
