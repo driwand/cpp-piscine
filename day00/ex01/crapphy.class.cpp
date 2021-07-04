@@ -1,5 +1,7 @@
 #include "crapphy.class.hpp"
 
+int oldest_contact = 0;
+
 input_code hash_input (std::string str) {
 	str = trim(str);
     if (str == "ADD") return add;
@@ -76,12 +78,17 @@ int isNumber(std::string str) {
 	return 1;
 }
 
-
 void	add_contact(Crapphy *contacts, int *index) {
 	int i = *index;
 
-	if (*index > 7) i = 0;
-	else *index = *index + 1;
+	if (*index > 7) {
+
+		i = oldest_contact;
+		oldest_contact = (oldest_contact + 1 > 7) ? 0 : oldest_contact + 1;
+	}
+	else {
+		*index = *index + 1;
+	}
 	contacts[i].setFirstName(prompt("first name"));
 	contacts[i].setLastName(prompt("last name"));
 	contacts[i].setNickName(prompt("nickname"));
