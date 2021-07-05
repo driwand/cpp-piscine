@@ -3,7 +3,7 @@
 #include <cctype>
 
 std::string to_uppercase(std::string str) {
-	for (int i = 0; i < str.size(); i++) {
+	for (size_t i = 0; i < str.size(); i++) {
 		str[i] = toupper(str[i]);
 	}
 	return str;

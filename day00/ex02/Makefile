@@ -1,10 +1,27 @@
-CC= clang++
-FLAGS= -Wall -Wextra -Werror
+
+CC = clang++
+FLAGS = -Wall -Wextra -Werror
+NAME = GlobalBanksters
+
 SRCS= Account.cpp \
 	tests.cpp
 
-all:
-	$(CC) $(SRCS) -o GlobalBanksters
+OBJS = $(SRCS:.cpp=.o)
+
+HEADERS = -I .
+
+all : $(NAME) 
+
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
+
+%.o : %.c
+	$(CC) $(HEADERS) -c $< -o $@
 
 clean:
-	rm GlobalBanksters
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
