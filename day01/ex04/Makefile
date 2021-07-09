@@ -1,8 +1,26 @@
-CC= clang++
-FLAGS= -Wall -Wextra -Werror
+
+CC = clang++
+FLAGS = -Wall -Wextra -Werror
+NAME = replace
+
 SRCS = main.cpp
 
-all:
-	$(CC) $(FLAGS) $(SRCS) -o replace
+OBJS = $(SRCS:.cpp=.o)
+
+HEADERS = -I .
+
+all : $(NAME) 
+
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
+
+%.o : %.cpp
+	$(CC) $(HEADERS) -c $< -o $@
+
 clean:
-	rm replace
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all

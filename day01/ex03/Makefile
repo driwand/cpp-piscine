@@ -1,11 +1,29 @@
-CC= clang++
-FLAGS= -Wall -Wextra -Werror
+
+CC = clang++
+FLAGS = -Wall -Wextra -Werror
+NAME = war
+
 SRCS = main.cpp \
 	Weapon.cpp \
 	HumanA.cpp \
 	HumanB.cpp
 
-all:
-	$(CC) $(FLAGS) $(SRCS) -o war
+OBJS = $(SRCS:.cpp=.o)
+
+HEADERS = -I .
+
+all : $(NAME) 
+
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
+
+%.o : %.cpp Weapon.hpp HumanA.hpp HumanB.hpp
+	$(CC) $(HEADERS) -c $< -o $@
+
 clean:
-	rm war
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all

@@ -1,11 +1,29 @@
-CC= clang++
-FLAGS= -Wall -Wextra -Werror
+
+CC = clang++
+FLAGS = -Wall -Wextra -Werror
+NAME = zombies
+
 SRCS = main.cpp \
 	Zombie.cpp \
 	newZombie.cpp \
 	randomChump.cpp
 
-all:
-	$(CC) $(FLAGS) $(SRCS) -o zombies
+OBJS = $(SRCS:.cpp=.o)
+
+HEADERS = -I .
+
+all : $(NAME) 
+
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
+
+%.o : %.cpp Zombie.hpp
+	$(CC) $(HEADERS) -c $< -o $@
+
 clean:
-	rm zombies
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all

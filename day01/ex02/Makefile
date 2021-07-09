@@ -1,9 +1,25 @@
-CC= clang++
-FLAGS= -Wall -Wextra -Werror
+
+CC = clang++
+FLAGS = -Wall -Wextra -Werror
+NAME = bigbrain
+
 SRCS = main.cpp
+OBJS = $(SRCS:.cpp=.o)
 
+HEADERS = -I .
 
-all:
-	$(CC) $(FLAGS) $(SRCS) -o bigbrain
+all : $(NAME) 
+
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
+
+%.o : %.cpp
+	$(CC) $(HEADERS) -c $< -o $@
+
 clean:
-	rm bigbrain
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
