@@ -2,6 +2,13 @@
 #include <fstream>
 #include <sstream>
 
+std::string to_uppercase(std::string str) {
+	for (size_t i = 0; i < str.size(); i++) {
+		str[i] = toupper(str[i]);
+	}
+	return str;
+}
+
 int main(int argc, char **argv) {
 	if (argc != 4) {
 		std::cerr << "Not a valid arguments" << std::endl;
@@ -10,7 +17,7 @@ int main(int argc, char **argv) {
 
 	std::string filename = argv[1];
 	std::ifstream file(filename);
-	std::ofstream file2(filename + ".replace");
+	std::ofstream file2(to_uppercase(filename) + ".replace");
 	
 	if (!file) {
 		std::cerr << "Could not open the file\n";
@@ -33,5 +40,7 @@ int main(int argc, char **argv) {
 	}
 	res += fileContent;
 	file2 << res;
+	file.close();
+	file2.close();
 	return (0);
 }
