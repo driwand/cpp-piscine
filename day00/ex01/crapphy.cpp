@@ -3,9 +3,7 @@
 int main() {
 	std::string input;
 	Phonebook phone;
-	int num_contacts;
 
-	num_contacts = 0;
 	while (1) {
 		std::cout << "Pick a command (ADD/SEARCH/EXIT): ";
 		if(!std::getline(std::cin, input))
