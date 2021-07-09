@@ -15,7 +15,7 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
 
-%.o : %.c
+%.o : %.cpp Account.hpp
 	$(CC) $(HEADERS) -c $< -o $@
 
 clean:
