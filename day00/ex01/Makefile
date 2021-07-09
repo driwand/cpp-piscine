@@ -4,7 +4,9 @@ FLAGS = -Wall -Wextra -Werror
 NAME = crapphy
 
 SRCS= crapphy.cpp \
-	crapphy.class.cpp
+	crapphy.class.cpp \
+	phonebook.cpp \
+	utils.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -15,7 +17,7 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
 
-%.o : %.c crapphy.class.hpp
+%.o : %.cpp crapphy.class.hpp phonebook.hpp
 	$(CC) $(HEADERS) -c $< -o $@
 
 clean:

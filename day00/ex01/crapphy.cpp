@@ -1,8 +1,8 @@
-#include "crapphy.class.hpp"
+#include "phonebook.hpp"
 
 int main() {
 	std::string input;
-	Crapphy contacts[8];
+	Phonebook phone;
 	int num_contacts;
 
 	num_contacts = 0;
@@ -13,10 +13,10 @@ int main() {
 		switch (hash_input(input))
 		{
 			case add:
-				add_contact(contacts, &num_contacts);
+				phone.add_contact();
 				break;
 			case search:
-				search_contacts(contacts, num_contacts);
+				phone.search_contacts();
 				break;
 			case quit:
 				exit(0);
