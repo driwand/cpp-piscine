@@ -18,8 +18,5 @@ int main()
 		jim.attack();
 		club.setType("some other type of club");
 		jim.attack();
-		Weapon club2 = Weapon("my new ordinary fire sword");
-		jim.setWeapon(club2);
-		jim.attack();
 	}
 }

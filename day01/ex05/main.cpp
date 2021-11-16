@@ -3,7 +3,7 @@
 int main() {
 	Karen karen;
 
-	karen.complain("WARNING");
+	karen.complain("");
 	karen.complain("ERROR");
 	return 0;
 }

@@ -1,6 +1,6 @@
 
 CC = clang++
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = zombies
 
 SRCS = main.cpp \
@@ -17,7 +17,7 @@ $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
 
 %.o : %.cpp Zombie.hpp
-	$(CC) $(HEADERS) -c $< -o $@
+	$(CC) $(FLAGS) $(HEADERS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)

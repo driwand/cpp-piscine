@@ -1,12 +1,6 @@
 
-all:
-	$(CC) $(FLAGS) $(SRCS) -o karen
-clean:
-	rm karen
-
-
 CC = clang++
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = karen
 
 SRCS = main.cpp \
@@ -22,7 +16,7 @@ $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
 
 %.o : %.cpp Karen.hpp
-	$(CC) $(HEADERS) -c $< -o $@
+	$(CC) $(FLAGS) $(HEADERS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)

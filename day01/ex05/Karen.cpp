@@ -1,22 +1,22 @@
 #include "Karen.hpp"
 
-input_code hash_input (std::string const str) {
-    if (str == "DEBUG") return DEBUG;
-    if (str == "INFO") return INFO;
-	if (str == "WARNING") return WARNING;
-	if (str == "ERROR") return ERROR;
-	return none;
-};
-
 void Karen::complain(std::string level) {	
+    std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Karen::*dg[4]) () = {
 		&Karen::debug,
 		&Karen::info,
 		&Karen::warning,
 		&Karen::error
 	};
-	input_code input = hash_input(level);
-	if (input != none) (this->*dg[input])();
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (levels[i] == level)
+        {
+            (this->*dg[i])();
+            break ;
+        }
+    }
 }
 
 void Karen::debug(void) {

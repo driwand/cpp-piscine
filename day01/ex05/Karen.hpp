@@ -3,14 +3,6 @@
 # include <iostream>
 # include <string>
 
-enum input_code {
-	DEBUG,
-	INFO,
-	WARNING,
-	ERROR,
-	none
-};
-
 class Karen {
 	public:
 		void complain(std::string level);

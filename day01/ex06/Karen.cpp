@@ -1,32 +1,32 @@
 #include "Karen.hpp"
 
-input_code hash_input (std::string const str) {
-    if (str == "DEBUG") return DEBUG;
-    if (str == "INFO") return INFO;
-	if (str == "WARNING") return WARNING;
-	if (str == "ERROR") return ERROR;
-	return none;
-};
-
-void Karen::karenLevel(std::string level) {	
+void Karen::karenLevel(std::string level) {
+	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Karen::*dg[4]) () = {
 		&Karen::debug,
 		&Karen::info,
 		&Karen::warning,
 		&Karen::error
 	};
+	int i;
+	for (i = 0; i < 4; i++)
+    {
+        if (level == levels[i]) break;
+    }
 
-	switch (hash_input(level))
+	switch (i)
 	{
-		case DEBUG:
+		case 0:
 			(this->*dg[0])();
-		case INFO:
+		case 1:
 			(this->*dg[1])();
-		case WARNING:
+		case 2:
 			(this->*dg[2])();
-		case ERROR:
+		case 3:
 			(this->*dg[3])();
+			break;
 		default:
+			std::cout << "[ Probably complaining about insignificant problems ]\n";
 			break;
 	}
 }
