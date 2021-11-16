@@ -16,12 +16,10 @@ Fixed::Fixed(Fixed const& src) {
 
 Fixed::Fixed(int const nbr) {
     std::cout << "Int constructor called\n";
-    this->val = nbr << this->frac;
 }
 
 Fixed::Fixed(float const nbr) {
     std::cout << "Float constructor called\n";
-    this->val = roundf(nbr * (1 << this->frac));
 }
 
 Fixed& Fixed::operator=(Fixed const& as) {
@@ -51,6 +49,5 @@ int Fixed::toInt(void) const {
 
 std::ostream& operator<<(std::ostream& o, Fixed const& fixed) {
     // to do
-    // o << fixed.toFloat()
     return o;
 }
