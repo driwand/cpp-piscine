@@ -26,6 +26,12 @@ ClapTrap::~ClapTrap(void) {
 
 ClapTrap& ClapTrap::operator=(ClapTrap const &cp) {
     std::cout << "Assignation operator called\n";
+	if (this != &cp) {
+		this->name = cp.name;
+		this->hitPoints = cp.hitPoints;
+		this->attackDamage = cp.attackDamage;
+		this->energyPoints = cp.energyPoints;
+	}
     return *this;
 }
 

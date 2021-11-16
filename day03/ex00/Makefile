@@ -1,10 +1,27 @@
-CC= clang++
-FLAGS= -Wall -Wextra -Werror
+
+CC = clang++
+FLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = ClapTrap
+
 SRCS= ClapTrap.cpp \
 	main.cpp
 
-all:
-	$(CC) $(SRCS) -o ClapTrap
+OBJS = $(SRCS:.cpp=.o)
+
+HEADERS = -I .
+
+all : $(NAME) 
+
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
+
+%.o : %.cpp
+	$(CC) $(FLAGS) $(HEADERS) -c $< -o $@
 
 clean:
-	rm ClapTrap
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
