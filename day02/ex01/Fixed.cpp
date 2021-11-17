@@ -18,7 +18,7 @@ Fixed::Fixed(int const nbr) {
     std::cout << "Int constructor called\n";
     this->val = 0;
     int nb = nbr;
-    float t = (1 << 23);
+    float t = (1 << 22);
     for (int i = 30; i >= 0; i--)
     {
         if (nb >= t)
@@ -34,7 +34,7 @@ Fixed::Fixed(float const nbr) {
     std::cout << "Float constructor called\n";
     this->val = 0;
     float nb = nbr;
-    float t = (1 << 23);
+    float t = (1 << 22);
     for (int i = 30; i >= 0; i--)
     {
         if (nb >= t)
@@ -66,7 +66,7 @@ void Fixed::setRawBits(int const raw) {
 
 float Fixed::toFloat(void) const {
     float readbits = 0;
-    float t = (1 << 23);
+    float t = (1 << 22);
     for (int i = 30; i >= 0; i--)
     {
         if (val & (1 << i))
@@ -78,7 +78,7 @@ float Fixed::toFloat(void) const {
 
 int Fixed::toInt(void) const {
     float readbits = 0;
-    float t = (1 << 23);
+    float t = (1 << 22);
     for (int i = 30; i >= 0; i--)
     {
         if (val & (1 << i))
