@@ -86,11 +86,11 @@ Fixed& Fixed::operator=(Fixed const& as) {
 }
 
 Fixed Fixed::operator+(Fixed const& as) {
-    return (Fixed(this->val + as.val));
+    return (Fixed(this->toFloat() + as.toFloat()));
 }
 
 Fixed Fixed::operator-(Fixed const& as) {
-    return (Fixed(this->val - as.val));
+    return (Fixed(this->toFloat() - as.toFloat()));
 }
 
 Fixed Fixed::operator*(Fixed const& as) {
