@@ -1,14 +1,14 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(void) {
-	std::cout << "Default constructor called\n";
+	std::cout << "ClapTrap default constructor called\n";
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->attackDamage = 0;
 }
 
 ClapTrap::ClapTrap(std::string name) {
-	std::cout << "Name constructor called\n";
+	std::cout << "ClapTrap name constructor called\n";
 	this->name = name;
 	this->hitPoints = 10;
 	this->energyPoints = 10;
@@ -16,16 +16,16 @@ ClapTrap::ClapTrap(std::string name) {
 }
 
 ClapTrap::ClapTrap(ClapTrap const &cp) {
-    std::cout << "Copy constructor called\n";
+    std::cout << "ClapTrap copy constructor called\n";
     *this = cp;
 }
 
 ClapTrap::~ClapTrap(void) {
-	std::cout << "Destructor called\n";
+	std::cout << "ClapTrap destructor called\n";
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const &cp) {
-    std::cout << "Assignation operator called\n";
+    std::cout << "ClapTrap assignation operator called\n";
 	if (this != &cp) {
 		this->name = cp.name;
 		this->hitPoints = cp.hitPoints;
@@ -35,7 +35,7 @@ ClapTrap& ClapTrap::operator=(ClapTrap const &cp) {
     return *this;
 }
 
-void ClapTrap::attack(std::string const & target) {
+void ClapTrap::attack(std::string const &target) {
 	std::cout << "ClapTrap " << name << " attack " << target;
 	std::cout << ", causing " << attackDamage << " points of damage!\n";
 }
