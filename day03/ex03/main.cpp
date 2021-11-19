@@ -5,6 +5,7 @@ int main() {
 	d.attack("ee");
 	// d.beRepaired(4);
 	d.guardGate();
+	d.whoAmI();
 	// d.highFivesGuys();
 	return 0;
 }
