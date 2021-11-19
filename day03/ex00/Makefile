@@ -15,7 +15,7 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
 
-%.o : %.cpp
+%.o : %.cpp ClapTrap.hpp
 	$(CC) $(FLAGS) $(HEADERS) -c $< -o $@
 
 clean:
