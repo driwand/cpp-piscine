@@ -1,7 +1,7 @@
 
 CC = clang++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = FragTrap
+NAME = DiamondTrap
 
 SRCS= ClapTrap.cpp \
 	ScavTrap.cpp \
