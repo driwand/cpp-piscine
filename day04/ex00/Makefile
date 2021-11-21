@@ -5,6 +5,9 @@ NAME = poly
 
 SRCS= Animal.cpp \
 	Dog.cpp \
+	Cat.cpp \
+	WrongAnimal.cpp \
+	WrongCat.cpp \
 	main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
@@ -16,7 +19,7 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(HEADERS) $(OBJS) -o $(NAME)
 
-%.o : %.cpp Animal.hpp Dog.hpp
+%.o : %.cpp Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp
 	$(CC) $(FLAGS) $(HEADERS) -c $< -o $@
 
 clean:
