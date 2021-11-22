@@ -21,5 +21,8 @@ int main() {
         ct.printIdea();
         tmpct.printIdea();
 	}
+
+	for (int i = 0; i < 4; i++)
+		delete pets[i];
 	return 0;
 }
