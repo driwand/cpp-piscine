@@ -11,7 +11,7 @@ Cat::Cat(Cat const &cp) {
 }
 
 Cat::~Cat(void) {
-	std::cout << "Destructor of Aminal called\n";
+	std::cout << "Destructor of Cat called\n";
 }
 
 Cat& Cat::operator=(Cat const &cp) {

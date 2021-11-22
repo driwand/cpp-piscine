@@ -10,7 +10,7 @@ WrongAnimal::WrongAnimal(WrongAnimal const &cp) {
 }
 
 WrongAnimal::~WrongAnimal(void) {
-	std::cout << "Destructor of Aminal called\n";
+	std::cout << "Destructor of WrongAminal called\n";
 }
 
 WrongAnimal& WrongAnimal::operator=(WrongAnimal const &cp) {

@@ -10,7 +10,7 @@ Brain::Brain(Brain const &cp) {
 }
 
 Brain::~Brain(void) {
-	std::cout << "Destructor of Aminal called\n";
+	std::cout << "Destructor of Brain called\n";
 }
 
 Brain& Brain::operator=(Brain const &cp) {

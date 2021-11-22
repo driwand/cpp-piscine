@@ -11,7 +11,7 @@ WrongCat::WrongCat(WrongCat const &cp) {
 }
 
 WrongCat::~WrongCat(void) {
-	std::cout << "Destructor of Aminal called\n";
+	std::cout << "Destructor of WrongAminal called\n";
 }
 
 WrongCat& WrongCat::operator=(WrongCat const &cp) {

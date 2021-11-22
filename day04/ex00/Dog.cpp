@@ -11,7 +11,7 @@ Dog::Dog(Dog const &cp) {
 }
 
 Dog::~Dog(void) {
-	std::cout << "Destructor of Aminal called\n";
+	std::cout << "Destructor of Dog called\n";
 }
 
 Dog& Dog::operator=(Dog const &cp) {
