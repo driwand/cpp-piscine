@@ -19,6 +19,7 @@ Dog::~Dog(void) {
 Dog& Dog::operator=(Dog const &cp) {
 	if (this != &cp) {
 		this->type = cp.type;
+		this->brain = new Brain();
 	}
 	return *this;
 }

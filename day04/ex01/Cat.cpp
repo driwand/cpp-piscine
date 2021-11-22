@@ -18,8 +18,8 @@ Cat::~Cat(void) {
 
 Cat& Cat::operator=(Cat const &cp) {
 	if (this != &cp) {
-		
 		this->type = cp.type;
+		this->brain = new Brain();
 	}
 	return *this;
 }
