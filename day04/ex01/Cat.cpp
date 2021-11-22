@@ -8,6 +8,7 @@ Cat::Cat(void) {
 
 Cat::Cat(Cat const &cp) {
 	std::cout << "Copy constructor of Cat called\n";
+	this->brain = NULL;
 	*this = cp;
 }
 
@@ -19,7 +20,9 @@ Cat::~Cat(void) {
 Cat& Cat::operator=(Cat const &cp) {
 	if (this != &cp) {
 		this->type = cp.type;
+		delete this->brain;
 		this->brain = new Brain();
+		*this->brain = *cp.brain;
 	}
 	return *this;
 }
