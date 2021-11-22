@@ -11,9 +11,18 @@ int main() {
 	for (int i = 2; i < 4; i++) {
 		pets[i] = new Dog();
 	}
+
 	Cat ct;
 	{
-		Cat tmpct = ct;	
+		Cat tmpct(ct);
+		ct.printIdea();
+        tmpct.printIdea();
+        ct.setIdea("I need to eat");
+        ct.printIdea();
+        tmpct.printIdea();
 	}
+
+	for (int i = 0; i < 4; i++)
+		delete pets[i];
 	return 0;
 }
