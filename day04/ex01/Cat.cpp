@@ -34,3 +34,11 @@ std::string Cat::getType(void) const {
 void Cat::makeSound(void) const {
 	std::cout << "Miaowwww\n";
 }
+
+void Cat::printIdea(void) {
+	std::cout << brain->getIdea() << std::endl;
+}
+
+void Cat::setIdea(std::string idea) {
+	brain->setIdea(idea);
+}

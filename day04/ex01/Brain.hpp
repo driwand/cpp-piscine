@@ -6,8 +6,11 @@ class Brain {
 	public:
 		Brain(void);
 		Brain(Brain const &cp);
-		~Brain(void);
+		virtual ~Brain(void);
 
+		std::string getIdea(void);
+		void setIdea(std::string idea);
+		
 		Brain& operator=(Brain const &cp);
 
 	private:
