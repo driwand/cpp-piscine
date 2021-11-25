@@ -3,16 +3,17 @@
 # include <iostream>
 # include "AMateria.hpp"
 
-class Ice : virtual public AMateria {
+class Ice : public AMateria {
 	public:
 		Ice(void);
-		Ice(std::string const &type);
 		Ice(Ice const &cp);
 		~Ice();
 
 		std::string const & getType() const;
 
 		Ice &operator=(Ice const &cp);
+		AMateria * clone(void) const;
+		void use(ICharacter& target);
 };
 
 #endif

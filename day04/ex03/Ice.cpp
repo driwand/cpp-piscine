@@ -1,11 +1,7 @@
 #include "Ice.hpp"
 
 Ice::Ice(void) {
-
-}
-
-Ice::Ice(std::string const &type) {
-	this->type = type;
+	this->type = "ice";
 }
 
 Ice::Ice(Ice const &cp) {
@@ -25,4 +21,13 @@ Ice &Ice::operator=(Ice const &cp) {
 		this->type = cp.type;
 	}
 	return *this;
+}
+
+AMateria *Ice::clone(void) const {
+	AMateria *materia = new Ice();
+	return materia;
+}
+
+void Ice::use(ICharacter& target) {
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
 }
