@@ -1,11 +1,12 @@
 
 CC = clang++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+# FLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = inter
 
 SRCS= main.cpp \
 	AMateria.cpp \
 	Ice.cpp \
+	Cure.cpp \
 	MateriaSource.cpp \
 	Character.cpp
 

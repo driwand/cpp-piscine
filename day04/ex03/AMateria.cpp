@@ -26,3 +26,7 @@ AMateria &AMateria::operator=(AMateria const &cp) {
 	}
 	return *this;
 }
+
+void AMateria::use(ICharacter& target) {
+	std::cout << "Materia use " << target.getName() << std::endl;
+}
