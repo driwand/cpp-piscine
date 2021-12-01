@@ -6,7 +6,12 @@ int main() {
 	Bureaucrat f = bur;
 	std::cout << f.getName() << std::endl;
 
-	bur.setGrade(150);
+	try {
+		bur.setGrade(151);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	
 	std::cout << bur;
 	try {
 		bur.decreaseGrade();

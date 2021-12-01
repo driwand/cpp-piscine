@@ -32,6 +32,8 @@ int Bureaucrat::getGrade() const {
 }
 
 void Bureaucrat::setGrade(int grade) {
+	if (grade > 150) throw GradeTooLowException();
+	if (grade < 1) throw GradeTooHighException();
 	this->_grade = grade;
 }
 
