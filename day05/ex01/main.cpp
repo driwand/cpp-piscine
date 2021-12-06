@@ -1,28 +1,17 @@
 #include "Bureaucrat.hpp"
 
 int main() {
-	Bureaucrat bur("bur1");
 
 	try {
+		Bureaucrat bur("bur1");
 		bur.setGrade(4);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	Form form1("form1");
-	std::cout << form1;
-
-	try {
+		Form form1("form1");
+		std::cout << form1;
 		form1.beSigned(bur);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << form1;
-	bur.signForm(form1);
-	try {
+		std::cout << form1;
+		bur.signForm(form1);
 		bur.decreaseGrade();
-	} catch(std::exception &e) {
+	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 }

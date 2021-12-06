@@ -46,7 +46,7 @@ const char *Form::GradeTooHighException::what() const throw () {
 }
 
 void Form::beSigned(Bureaucrat bur) {
-	if (bur.getGrade() > GRADE_TO_SIGN) throw GradeTooLowException();
+	if (bur.getGrade() > this->_signGrade) throw GradeTooLowException();
 	if (bur.getGrade() < 1) throw GradeTooHighException();
 	_signed = true;
 }
@@ -54,5 +54,5 @@ void Form::beSigned(Bureaucrat bur) {
 std::ostream &operator<<(std::ostream &o, Form const &form) {
 	std::string formStat = (form.isSigned()) ? "signed" : "not signed";
 	return o << "The form " << form.getName() << " is " << formStat <<
-		". The required grades to sign and execute a form are sequentially " << GRADE_TO_SIGN << " and " << GRADE_TO_EXECUTE << ".\n";
+		". The required grades to sign and execute a form are sequentially " << this->_signGrade << " and " << this->_executeGrade << ".\n";
 }
