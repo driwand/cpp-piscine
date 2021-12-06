@@ -39,7 +39,7 @@ class Form {
 			virtual const char* what() const throw ();
 		};
 
-		class GradeSignLowException : public std::exception {
+		class GradeExecuteLowException : public std::exception {
 			virtual const char* what() const throw ();
 		};
 
