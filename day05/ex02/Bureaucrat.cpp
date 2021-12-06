@@ -51,11 +51,20 @@ void Bureaucrat::increaseGrade() {
 	this->_grade--;
 }
 
-void Bureaucrat::signForm(Form form) const {
-	if (form.isSigned()) {
+void Bureaucrat::executeForm(Form const &form) {
+	try {
+		form.execute(*this);
+	} catch (std::exception &e) {
+		std::cout << this->getName() << " could not execute the form " << form.getName() << std::endl;
+	}
+}
+
+void Bureaucrat::signForm(Form &form) const {
+	try {
+		form.beSigned(*this);
 		std::cout << this->getName() << " signs " << form.getName() << ".\n";
-	} else {
-		std::cout << this->getName() << " cannot signs " << form.getName() << " because grade is not valid.\n";
+	} catch(std::exception &e) {
+		std::cout << this->getName() << " cannot signs " << form.getName() << " because grade is not valid.\n";		
 	}
 }
 

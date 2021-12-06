@@ -1,28 +1,17 @@
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main() {
-	Bureaucrat bur("bur1");
 
 	try {
-		bur.setGrade(4);
+		Bureaucrat bur("bur1");
+		bur.setGrade(137);
+
+		ShrubberyCreationForm shrub("home");
+		bur.signForm(shrub);
+		shrub.execute(bur);
+
 	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	Form form1("form1");
-	std::cout << form1;
-
-	try {
-		form1.beSigned(bur);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << form1;
-	bur.signForm(form1);
-	try {
-		bur.decreaseGrade();
-	} catch(std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 }

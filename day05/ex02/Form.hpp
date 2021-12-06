@@ -3,6 +3,7 @@
 # include "Bureaucrat.hpp"
 # include <iostream>
 # include <exception>
+# include <fstream>
 # define GRADE_TO_SIGN 10
 # define GRADE_TO_EXECUTE 5
 
@@ -11,6 +12,7 @@ class Form {
 	public:
 		Form();
 		Form(std::string name);
+		Form(std::string name, int gradeSign, int gradeExecute);
 		Form(Form const &cp);
 		~Form();
 
@@ -26,6 +28,9 @@ class Form {
 		void increaseGrade();
 		void decreaseGrade();
 
+		void execute(Bureaucrat const &executor) const;
+		virtual void action() const = 0;
+
 		class GradeTooHighException : public std::exception {
 			virtual const char* what() const throw();
 		};
@@ -34,7 +39,15 @@ class Form {
 			virtual const char* what() const throw ();
 		};
 
-	protected:
+		class GradeSignLowException : public std::exception {
+			virtual const char* what() const throw ();
+		};
+
+		class FormNotSigned : public std::exception {
+			virtual const char* what() const throw ();
+		};
+
+	private:
 		const std::string _name;
 		bool _signed;
 		const int _signGrade;
