@@ -1,11 +1,13 @@
 #include "Form.hpp"
 
 Form::Form() : _signed(false), _signGrade(GRADE_TO_SIGN), _executeGrade(GRADE_TO_EXECUTE) {
-
+	if (GRADE_TO_SIGN > 150 || GRADE_TO_EXECUTE > 150) throw GradeTooLowException();
+	if (GRADE_TO_SIGN < 1 || GRADE_TO_EXECUTE < 1) throw GradeTooHighException();
 }
 
 Form::Form(std::string name) : _name(name), _signed(false), _signGrade(GRADE_TO_SIGN), _executeGrade(GRADE_TO_EXECUTE) {
-	
+	if (GRADE_TO_SIGN > 150 || GRADE_TO_EXECUTE > 150) throw GradeTooLowException();
+	if (GRADE_TO_SIGN < 1 || GRADE_TO_EXECUTE < 1) throw GradeTooHighException();
 }
 
 Form::Form(std::string name, int gradeSign, int gradeExecute) : _name(name), _signed(false), _signGrade(gradeSign), _executeGrade(gradeExecute) {

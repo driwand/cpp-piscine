@@ -8,6 +8,10 @@ Bureaucrat::Bureaucrat(std::string name) : _name(name) {
 	this->_grade = 150;
 }
 
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
+	setGrade(grade);
+}
+
 Bureaucrat::Bureaucrat(Bureaucrat const &cp) : _name(cp.getName()) {
 	*this = cp;
 }
@@ -54,6 +58,7 @@ void Bureaucrat::increaseGrade() {
 void Bureaucrat::executeForm(Form const &form) {
 	try {
 		form.execute(*this);
+		std::cout << this->getName() << " executes " << form.getName() << std::endl;
 	} catch (std::exception &e) {
 		std::cout << this->getName() << " could not execute the form " << form.getName() << std::endl;
 	}

@@ -57,7 +57,6 @@ void ShrubberyCreationForm::action() const {
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &cp) {
-	(void)cp;
 	this->target = cp.target;
 	return *this;
 }

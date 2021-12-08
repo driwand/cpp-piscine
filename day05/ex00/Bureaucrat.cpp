@@ -8,6 +8,10 @@ Bureaucrat::Bureaucrat(std::string name) : _name(name) {
 	this->_grade = 150;
 }
 
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
+	setGrade(grade);
+}
+
 Bureaucrat::Bureaucrat(Bureaucrat const &cp) : _name(cp.getName()) {
 	*this = cp;
 }

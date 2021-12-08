@@ -11,6 +11,7 @@ class Form {
 	public:
 		Form();
 		Form(std::string name);
+		Form(std::string name, int gradeSign, int gradeExec);
 		Form(Form const &cp);
 		~Form();
 
@@ -22,9 +23,6 @@ class Form {
 		bool isSigned() const;
 
 		void beSigned(Bureaucrat bur);
-
-		void increaseGrade();
-		void decreaseGrade();
 
 		class GradeTooHighException : public std::exception {
 			virtual const char* what() const throw();

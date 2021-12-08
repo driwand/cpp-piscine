@@ -25,9 +25,6 @@ class Form {
 
 		void beSigned(Bureaucrat bur);
 
-		void increaseGrade();
-		void decreaseGrade();
-
 		void execute(Bureaucrat const &executor) const;
 		virtual void action() const = 0;
 

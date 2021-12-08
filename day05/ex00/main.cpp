@@ -1,29 +1,15 @@
 #include "Bureaucrat.hpp"
 
 int main() {
-	Bureaucrat bur("bur1");
-
-	Bureaucrat f = bur;
-	std::cout << f.getName() << std::endl;
-
 	try {
-		bur.setGrade(151);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-	
-	std::cout << bur;
-	try {
+		Bureaucrat bur("bur1", 149);
+		Bureaucrat f = bur;
+		std::cout << f.getName() << std::endl;
 		bur.decreaseGrade();
-	} catch(std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	Bureaucrat bur2("bur2");
-	bur2.setGrade(1);
-	std::cout << bur2;
-	try {
+		std::cout << bur;
+		Bureaucrat bur2("bur2", 2);
 		bur2.increaseGrade();
+		std::cout << bur2;
 	} catch(std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
