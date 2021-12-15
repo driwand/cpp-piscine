@@ -27,6 +27,7 @@ Array<T>::Array() : _size(0) {
 
 template <typename T>
 Array<T>::Array(Array<T> const &cp) {
+	this->_elms = new T[0];
 	*this = cp;
 }
 
