@@ -3,9 +3,9 @@
 # include <iostream>
 
 template<typename T, typename U>
-void iter(T *arr, U len, T itFun(T)) {
+void iter(T *arr, U len, void itFun(T)) {
 	for (U i = 0; i < len; i++) {
-		arr[i] = itFun(arr[i]);
+		itFun(arr[i]);
 	}
 }
 
