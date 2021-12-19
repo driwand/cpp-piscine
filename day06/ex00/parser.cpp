@@ -1,24 +1,20 @@
 #include "parser.hpp"
 
-Parser::Parser() {
+Parser::Parser() : _isNan(false) { }
 
-}
-
-Parser::Parser(std::string arg) {
-	this->_arg = arg;
-}
+Parser::Parser(std::string arg) : _isNan(false), _arg(arg) { }
 
 Parser::Parser(Parser const &cp) {
 	*this = cp;
 }
 
-Parser::~Parser() {
-
-}
+Parser::~Parser() { }
 
 Parser &Parser::operator=(Parser const &cp) {
 	if (this == &cp) return *this;
 	this->_arg = cp._arg;
+	this->_resVal = cp._resVal;
+	this->_isNan = cp._isNan;
 	return *this;
 }
 
@@ -32,18 +28,18 @@ void Parser::convert() {
 }
 
 void Parser::displayInt() {
-	if (_resVal > INT32_MAX || _resVal < INT32_MIN)
+	if (_resVal > std::numeric_limits<int>::max() || _resVal < std::numeric_limits<int>::min() || this->_isNan)
 		std::cout << "int: impossible\n";
 	else
 		std::cout << "int: " << static_cast<int>(this->_resVal) << std::endl;
 }
 
 void Parser::displayChar() {
-	char c = static_cast<char>(this->_resVal);
-	if (isprint(c))
-		std::cout << "char: '" << static_cast<char>(this->_resVal) << "'" << std::endl;
-	else
+	char c = this->_resVal;
+	if (!isprint(c) || this->_isNan) 
 		std::cout << "char: Non displayable\n";
+	else
+		std::cout << "char: '" << static_cast<char>(this->_resVal) << "'" << std::endl;
 }
 
 void Parser::displayFloat() {
@@ -57,17 +53,27 @@ void Parser::displayFloat() {
 
 void Parser::displayDouble() {
 	std::cout.precision(15);
-	std::cout << "double: " << _resVal;
+	std::cout << "double: " << static_cast<double>(_resVal);
 	if (_resVal - static_cast<int>(_resVal) == 0.0)
 		std::cout << ".0\n";
 	else
 		std::cout << std::endl;
 }
 
+bool Parser::validNan(std::string str) {
+	return (str == "nan" || str == "nanf" ||
+		str == "-inf" || str == "+inf" || str == "inf" ||
+		str == "-inff" || str == "+inff" || str == "inff");
+}
+
 void Parser::parseArg() {
 	int checkFloat = 0;
 	int checkPoint = 0;
 
+	if (validNan(this->_arg)) {
+		this->_isNan = true;
+		return ;
+	}
 	for (int i = 0; i < (int)_arg.size(); i++) {
 		char c = _arg[i];
 		if (i == 0 && !validSign(c) && !isdigit(c)) throw InvalidSign();

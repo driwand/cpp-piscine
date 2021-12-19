@@ -36,19 +36,22 @@ class Parser {
 		};
 
 	private:
-		double _resVal;
-		std::string _arg;
+		double		_resVal;
+		bool		_isNan;
+		std::string	_arg;
 
-		void displayInt();
-		void displayChar();
-		void displayDouble();
-		void displayFloat();
+		void	parseArg();
 
-		void parseArg();
-		bool validSign(char c);
-		int validFloat(int index, int size, int checkFloat);
-		int validPoint(char prev, char next, int checkPoint);
-		int  validChar(char c);
+		void	displayInt();
+		void	displayChar();
+		void	displayDouble();
+		void	displayFloat();
+
+		bool	validNan(std::string str);
+		bool	validSign(char c);
+		int		validFloat(int index, int size, int checkFloat);
+		int		validPoint(char prev, char next, int checkPoint);
+		int		validChar(char c);
 };
 
 #endif
