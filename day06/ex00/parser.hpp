@@ -38,6 +38,7 @@ class Parser {
 	private:
 		double		_resVal;
 		bool		_isNan;
+		bool		_isChar;
 		std::string	_arg;
 
 		void	parseArg();

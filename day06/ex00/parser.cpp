@@ -1,8 +1,8 @@
 #include "parser.hpp"
 
-Parser::Parser() : _isNan(false) { }
+Parser::Parser() : _isNan(false), _isChar(false) { }
 
-Parser::Parser(std::string arg) : _isNan(false), _arg(arg) { }
+Parser::Parser(std::string arg) : _isNan(false), _isChar(false), _arg(arg) { }
 
 Parser::Parser(Parser const &cp) {
 	*this = cp;
@@ -15,12 +15,14 @@ Parser &Parser::operator=(Parser const &cp) {
 	this->_arg = cp._arg;
 	this->_resVal = cp._resVal;
 	this->_isNan = cp._isNan;
+	this->_isChar = cp._isChar;
 	return *this;
 }
 
 void Parser::convert() {
 	parseArg();
-	_resVal = std::stod(_arg);
+	if (!_isChar) _resVal = std::stod(_arg);
+	else _resVal = static_cast<double>(_arg[0]);
 	displayChar();
 	displayInt();
 	displayFloat();
@@ -72,6 +74,10 @@ void Parser::parseArg() {
 
 	if (validNan(this->_arg)) {
 		this->_isNan = true;
+		return ;
+	}
+	if (this->_arg.size() == 1 && isalpha(this->_arg[0])) {
+		this->_isChar = true;
 		return ;
 	}
 	for (int i = 0; i < (int)_arg.size(); i++) {
