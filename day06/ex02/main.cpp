@@ -53,6 +53,5 @@ int main() {
 	Base *bs = generate();
 	identify(bs);
 	identify(*bs);
-	// identify(test)
 	return 0;
 }
