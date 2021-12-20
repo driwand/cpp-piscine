@@ -35,7 +35,7 @@ template <typename T>
 Array<T>::Array(unsigned int n) : _size(n) {
 	this->_elms = new T[n];
 	for (unsigned int i = 0; i < n; i++) {
-		this->_elms[i] = 0;
+		this->_elms[i] = T();
 	}
 }
 
